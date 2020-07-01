@@ -1,4 +1,5 @@
 {
 	"telegramToken": "",
-	"qiwiToken": ""
+	"qiwiToken": "",
+	"qiwiWallet": ""
 }
