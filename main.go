@@ -107,7 +107,7 @@ func main() {
 				}
 				reply = "Your ID: " + strconv.Itoa(update.Message.From.ID) + "\n"
 				reply += "Your Username: @" + update.Message.From.UserName + "\n"
-				reply += "Your balance: " + strconv.Itoa(user.Balance)
+				reply += "Your balance: " + strconv.FormatFloat(user.Balance, 'f', 2, 64)
 				buttons := make([][]tgbotapi.KeyboardButton, 2)
 				buttons[0] = tgbotapi.NewKeyboardButtonRow(tgbotapi.NewKeyboardButton("/deposit"))
 				buttons[1] = tgbotapi.NewKeyboardButtonRow(tgbotapi.NewKeyboardButton("/mainmenu"))
@@ -165,7 +165,7 @@ func main() {
 								{"balance", user.Balance + paymentsHistory.Data[i].Sum.Amount},
 							},
 						}}
-						_, err := userCollection.UpdateOne(context.TODO(), filterUser, updateUser)
+						_, err = userCollection.UpdateOne(context.TODO(), filterUser, updateUser)
 						if err != nil {
 							log.Fatal(err)
 						}
